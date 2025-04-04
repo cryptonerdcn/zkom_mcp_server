@@ -2,13 +2,13 @@
 {
   "mcpServers": {
     "crypto-price": {
-      "command": "python",
-      "args": ["crypto_price_server.py"],
-      "cwd": "/absolute/path/to/your/project/folder",
-      "env": {
-        "COINBASE_API_URL": "https://api.coinbase.com/v2/exchange-rates",
-        "CACHE_TTL": "60"
-      }
+      "command": "uv",
+      "args": [
+          "--directory",
+          "/path/to/zkom_mcp_server",
+          "run",
+          "crypto_price_server.py"
+      ]
     }
   }
 }
