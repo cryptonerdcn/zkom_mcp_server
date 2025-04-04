@@ -16,6 +16,7 @@ from app.config import (
     LOGGING_CONFIG
 )
 from app.api.routes import router as api_router
+from app.api.mcp_endpoints import router as mcp_router
 
 # Configure logging
 logging.config.dictConfig(LOGGING_CONFIG)
@@ -39,6 +40,9 @@ app.add_middleware(
 
 # Include API router
 app.include_router(api_router, prefix=API_PREFIX)
+
+# Include MCP router at root level to comply with MCP protocol
+app.include_router(mcp_router)
 
 
 @app.middleware("http")
@@ -71,6 +75,25 @@ async def root():
         "description": API_DESCRIPTION,
         "docs_url": "/docs"
     }
+
+
+def run_server():
+    """
+    Entry point for the server when run as a module through console_scripts
+    """
+    import uvicorn
+    
+    port = int(os.getenv("PORT", "8000"))
+    host = os.getenv("HOST", "0.0.0.0")
+    
+    logger.info(f"Starting {API_TITLE} v{API_VERSION} on {host}:{port}")
+    
+    uvicorn.run(
+        "app.main:app",
+        host=host,
+        port=port,
+        log_level="info"
+    )
 
 
 if __name__ == "__main__":

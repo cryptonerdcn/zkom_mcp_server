@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "crypto-price": {
+      "command": "python",
+      "args": ["-m", "run"],
+      "cwd": "/path/to/zkom_mcp_server",
+      "env": {
+        "PORT": "8000",
+        "HOST": "0.0.0.0",
+        "COINBASE_API_URL": "https://api.coinbase.com/v2/exchange-rates"
+      }
+    }
+  }
+} 

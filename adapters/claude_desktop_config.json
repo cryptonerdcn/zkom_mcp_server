@@ -1,0 +1,26 @@
+{
+  "mcp_server": {
+    "url": "http://localhost:8000/api/v1/mcp",
+    "service_name": "claude.desktop.client",
+    "version": "1.0",
+    "timeout": 30.0
+  },
+  "crypto_api": {
+    "default_currency": "USD",
+    "watch_list": ["BTC", "ETH", "SOL", "ADA", "XRP", "DOT", "DOGE"],
+    "refresh_interval": 60,
+    "cache_ttl": 300
+  },
+  "ui": {
+    "theme": "light",
+    "decimal_places": 2,
+    "refresh_button": true,
+    "auto_refresh": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "claude_mcp_client.log",
+    "max_size": 1048576,
+    "backup_count": 3
+  }
+} 
